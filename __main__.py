@@ -27,8 +27,8 @@ if __name__ == "__main__":
         # Encode the image to a base64 string
         encoded_string = image_to_base64_string(img_path)
         
-        # Save the encoded string to a .txt file named by the current date
-        current_day = datetime.datetime.now().strftime('%Y-%m-%d')
+        # Save the encoded string to a .txt file named by the current date in DDMMYY format
+        current_day = datetime.datetime.now().strftime('%d%m%y')
         txt_path = f"{current_day}.txt"
         with open(txt_path, 'w') as txt_file:
             txt_file.write(encoded_string)
@@ -42,7 +42,7 @@ if __name__ == "__main__":
         with open(txt_path, 'r') as txt_file:
             encoded_string_from_file = txt_file.read()
         
-        current_day = datetime.datetime.now().strftime('%Y%m%d')
+        current_day = datetime.datetime.now().strftime('%d%m%y')
         output_img_path = f"decoded_{current_day}.jpg"
         base64_string_to_image(encoded_string_from_file, output_img_path)
         print(f"Decoded image saved to: {output_img_path}")
